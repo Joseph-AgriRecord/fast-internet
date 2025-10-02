@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WiFi Hotspot Packages</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f9fafb;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: #006f3c;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: background 0.3s, border-radius 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: rgba(255,255,255,0.2);
+      border-radius: 6px;
+    }
+
+    /* Dropdown */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: white;
+      color: #333;
+      min-width: 160px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+    }
+
+    nav ul li ul li {
+      padding: 10px;
+    }
+
+    nav ul li ul li a {
+      color: #333;
+      display: block;
+    }
+
+    nav ul li ul li:hover {
+      background: #f2f2f2;
+    }
+
+    /* Packages Section */
+    .container {
+      flex: 1;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .container h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2em;
+      color: #222;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 25px 20px;
+      text-align: center;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .card i {
+      font-size: 2em;
+      color: #006f3c;
+      margin-bottom: 12px;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 1.4em;
+      color: #222;
+    }
+
+    .card p {
+      margin: 6px 0;
+      color: #666;
+    }
+
+    .price {
+      font-size: 1.6em;
+      color: #006f3c;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    button {
+      background: #006f3c;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #004d2a;
+    }
+
+    button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: auto; /* pushes footer to bottom */
+    }
+
+    footer p {
+      margin: 6px 0;
+    }
+
+    footer .icons {
+      margin: 10px 0;
+    }
+
+    footer .icons a {
+      color: white;
+      margin: 0 8px;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    footer .icons a:hover {
+      color: #00cc66;
+    }
+
+    /* Responsive Nav for mobile */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1><i class="fa-solid fa-wifi"></i> My WiFi Hotspot</h1>
+    <nav>
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="#"><i class="fa-solid fa-box"></i> Packages</a></li>
+        <li>
+          <a href="#"><i class="fa-solid fa-bars"></i> More ▾</a>
+          <ul>
+            <li><a href="#"><i class="fa-solid fa-user"></i> About Us</a></li>
+            <li><a href="#"><i class="fa-solid fa-headset"></i> Support</a></li>
+            <li><a href="#"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Packages -->
+  <div class="container">
+    <h1>Choose Your WiFi Package</h1>
+    <div class="packages">
+      <div class="card">
+        <i class="fa-solid fa-bolt"></i>
+        <h2>Daily 100MB</h2>
+        <p>Validity: 24 hours</p>
+        <p class="price">KES 10</p>
+        <button onclick="buyPackage(1, 10)">Buy Now</button>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-bolt"></i>
+        <h2>Daily 500MB</h2>
+        <p>Validity: 24 hours</p>
+        <p class="price">KES 30</p>
+        <button onclick="buyPackage(2, 30)">Buy Now</button>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-calendar-week"></i>
+        <h2>Weekly 1GB</h2>
+        <p>Validity: 7 days</p>
+        <p class="price">KES 100</p>
+        <button onclick="buyPackage(3, 100)">Buy Now</button>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-calendar-week"></i>
+        <h2>Weekly 3GB</h2>
+        <p>Validity: 7 days</p>
+        <p class="price">KES 250</p>
+        <button onclick="buyPackage(4, 250)">Buy Now</button>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-calendar-days"></i>
+        <h2>Monthly 5GB</h2>
+        <p>Validity: 30 days</p>
+        <p class="price">KES 400</p>
+        <button onclick="buyPackage(5, 400)">Buy Now</button>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-calendar-days"></i>
+        <h2>Monthly 10GB</h2>
+        <p>Validity: 30 days</p>
+        <p class="price">KES 700</p>
+        <button onclick="buyPackage(6, 700)">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 My WiFi Hotspot. All Rights Reserved.</p>
+    <div class="icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+     <a href="https://wa.me/254110426848?text=Hello%2C%20I%20am%20a%20WiFi%20client%20and%20I%20want%20to%20talk%20to%20you">
+  <i class="fab fa-whatsapp"></i>
+</a>
+      <a href="mailto:johnngugi9398@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <p><i class="fa-solid fa-phone"></i> 0110 426 848 | <i class="fa-solid fa-envelope"></i> johnngugi9398@gmail.com</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    async function buyPackage(packageId, amount) {
+      const phone = prompt("Enter your M-PESA phone number (e.g., 2547XXXXXXXX):");
+      if (!phone) return alert("Phone number is required!");
+
+      try {
+        const res = await fetch("/api/pay", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            packageId: packageId,
+            amount: amount,
+            phone: phone
+          }),
+        });
+
+        const data = await res.json();
+        alert(data.message || "Payment initiated, check your phone to complete.");
+      } catch (err) {
+        alert("Error connecting to server. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>
